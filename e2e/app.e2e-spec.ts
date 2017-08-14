@@ -1,10 +1,10 @@
-import { A4appPage } from './app.po';
+import { PortalSigicPage } from './app.po';
 
-describe('a4app App', () => {
-  let page: A4appPage;
+describe('portal-sigic App', () => {
+  let page: PortalSigicPage;
 
   beforeEach(() => {
-    page = new A4appPage();
+    page = new PortalSigicPage();
   });
 
   it('should display welcome message', () => {
