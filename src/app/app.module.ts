@@ -7,10 +7,17 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AboutComponent } from './component/about/about.component';
+
+const appRoutes: Routes = [
+  {path:'', component:AboutComponent}
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent
+
   ],
   imports: [
     BrowserModule,
@@ -21,7 +28,8 @@ import { AppComponent } from './app.component';
     MdMenuModule,
     MdCardModule,
     MdToolbarModule,
-    MdIconModule
+    MdIconModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
