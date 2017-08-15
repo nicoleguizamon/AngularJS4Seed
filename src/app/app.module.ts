@@ -8,15 +8,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './component/about/about.component';
+import { HelpComponent } from './component/help/help.component';
 
 const appRoutes: Routes = [
-  {path:'', component:AboutComponent}
+  { path:'about', component:AboutComponent},
+  { path:'help', component:HelpComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    HelpComponent
 
   ],
   imports: [
