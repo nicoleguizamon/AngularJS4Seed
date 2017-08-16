@@ -1,14 +1,14 @@
-import { PortalSigicPage } from './app.po';
+import { SbAdminCliUpdatePage } from './app.po';
 
-describe('portal-sigic App', () => {
-  let page: PortalSigicPage;
+describe('sb-admin-cli-update App', () => {
+  let page: SbAdminCliUpdatePage;
 
   beforeEach(() => {
-    page = new PortalSigicPage();
+    page = new SbAdminCliUpdatePage();
   });
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!!');
   });
 });

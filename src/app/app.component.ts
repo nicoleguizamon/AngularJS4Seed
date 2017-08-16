@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  myData: Array<any>;
-
-  constructor(private http:Http) {
-
-    this.http.get('https://jsonplaceholder.typicode.com/photos')
-      .map(response => response.json())
-      .subscribe(res => this.myData = res);
-
-  }
+    constructor(private translate: TranslateService) {
+        translate.addLangs(['en', 'fr', 'ur', 'es']);
+        translate.setDefaultLang('en');
+        const browserLang = translate.getBrowserLang();
+        translate.use(browserLang.match(/en|fr|ur|es/) ? browserLang : 'en');
+    }
 }
