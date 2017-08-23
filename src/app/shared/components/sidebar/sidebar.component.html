@@ -1,5 +1,14 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <ul class="list-group">
+        <a routerLink="/home" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp; Inicio
+        </a>
+        <a routerLink="/news" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-file-o"></i>&nbsp; Noticias
+        </a>
+        <a routerLink="/expenses" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-edit"></i>&nbsp; Expensas
+        </a>
         <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'dashboard' | translate }}
         </a>
@@ -42,8 +51,6 @@
         <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-file-o"></i>&nbsp;{{ 'blankpage' | translate }}
         </a>
-        <a class="list-group-item more-themes" href="http://www.strapui.com/" >
-            {{ 'moretheme' | translate }}
-        </a>
+
     </ul>
 </nav>
