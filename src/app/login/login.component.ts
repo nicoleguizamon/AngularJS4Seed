@@ -27,16 +27,17 @@ export class LoginComponent implements OnInit {
 
     login() {
         localStorage.setItem('token',"TokenGenerado");
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
         /*this.loading = true;
+        
         this.authenticationService.login(this.username, this.password).subscribe(result => { 
             if (result == true)
             {
-                this.router.navigate(['/']);   
+                this.router.navigate(['/']);
             } else {
                 this.error = 'Credenciales incorrectas';
                 this.loading = false;
             }
         });*/
-    }    
+    }
 }
