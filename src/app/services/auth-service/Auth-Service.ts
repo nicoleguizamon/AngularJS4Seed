@@ -10,11 +10,12 @@ export class AuthService {
 
     constructor(private http: Http) { }
 
-    login(Usuario:Usuario): Observable<boolean>
+    login(username:string, password:string): Observable<boolean>
     {
-        let body='username=' + Usuario.username + '&password=' + Usuario.password;
+        let body='username=' + username + '&password=' + password;
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({'headers': headers});
+        //return this.http.get(this.getUrl('Token/Login?username='+username+'&password='+password), options).map(this.getDatos);
         return this.http.post(this.getUrl('Token/Login'), body, options).map(this.getDatos);
     }
 
@@ -24,9 +25,12 @@ export class AuthService {
 
     private getDatos(data: Response) {
         let datos=data.json();
-        if (datos && datos.access_token)
+        alert(datos);
+        //if (datos && datos.access_token)
+        if (datos)
         {
-            localStorage.setItem('token', datos.access_token);
+            //localStorage.setItem('token', datos.access_token);
+            localStorage.setItem('token', datos);
             return true;
         }
         return false;
