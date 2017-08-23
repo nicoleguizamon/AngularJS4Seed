@@ -36,7 +36,7 @@ userCustom:UserCustom;
     }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        localStorage.removeItem('token');
     }
 
     changeLang(language: string) {

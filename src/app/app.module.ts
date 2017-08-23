@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { UserdataService } from './services/userdata.service';
-
+import { AuthService } from './services/auth-service/Auth-Service';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -34,7 +34,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [AuthGuard, UserdataService],
+    providers: [AuthGuard, AuthService, UserdataService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
