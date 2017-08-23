@@ -26,10 +26,10 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        localStorage.setItem('token',"TokenGenerado");
-        this.router.navigate(['/home']);
-        /*this.loading = true;
-        
+        /*localStorage.setItem('token',"TokenGenerado");
+        this.router.navigate(['/home']);*/
+
+        this.loading = true;
         this.authenticationService.login(this.username, this.password).subscribe(result => { 
             if (result == true)
             {
@@ -38,6 +38,6 @@ export class LoginComponent implements OnInit {
                 this.error = 'Credenciales incorrectas';
                 this.loading = false;
             }
-        });*/
+        });
     }
 }
