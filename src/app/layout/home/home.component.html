@@ -1,0 +1,13 @@
+<div [@routerTransition]>
+    <h2 class="text-muted"><small>Resumen</small></h2>
+    <div class="row">
+        <div class="col-md-12">
+            <img class="img-fluid mx-auto d-block" [src]="buildingInfo.imagePath" alt="buildingInfo.name" width="100%">
+            <div class="carousel-caption">
+                <h3>{{buildingInfo.name}}</h3>
+                <p>{{buildingInfo.address}}</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
