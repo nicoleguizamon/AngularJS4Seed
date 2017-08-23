@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserInfo } from '../../interfaces/user-info';
 import { BuildingInfo } from '../../interfaces/building-info';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,6 +15,7 @@ userInfo:UserInfo;
   constructor() { }
 
   ngOnInit() {
+    this.buildingInfo = { imagePath: 'assets/images/slider1.jpg',}
   }
 
 }
