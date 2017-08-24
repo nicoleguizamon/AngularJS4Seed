@@ -14,11 +14,11 @@ export class UserdataService {
     private apiUrl = 'http://portalsigic.glubatec.com/api/';
 
     constructor(public http:Http) {
-        this.buildingInfo = {
+        /*this.buildingInfo = {
             name: 'Edificio Regina',
             imagePath: 'assets/images/slider1.jpg',
             news: [{
-                title: 'Luz',
+                title: '',
                 description: 'Se realizara un corte de luz desde las 9pm a 10pm en dia 3 de septiembre de 2017',
                 type:'Urgent'
             },{
@@ -30,11 +30,11 @@ export class UserdataService {
                 description: 'El pago de expensas se realiza en el NUEVO horario de 18hs a 21hs',
                 type:'Information'
             }]
-        };
+        };*/
     }
 
     getBuildingNews(){
-        return this.buildingInfo;
+        return this.http.get(this.getUrl('Building/GetDataBuilding'), this.getOptions()).map(res=>res.json());
     }
 
     getHeaderInfo() {
