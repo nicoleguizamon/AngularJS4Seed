@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInfo } from '../../interfaces/user-info';
 import { BuildingInfo } from '../../interfaces/building-info';
+import { UserdataService } from '../../services/userdata.service';
 
 
 @Component({
@@ -12,10 +13,10 @@ export class HomeComponent implements OnInit {
 buildingInfo:BuildingInfo;
 userInfo:UserInfo;
 
-  constructor() { }
+  constructor(private userdataService: UserdataService) { }
 
   ngOnInit() {
-    this.buildingInfo = { imagePath: 'assets/images/slider1.jpg',}
+    this.buildingInfo = this.userdataService.getBuildingNews();
   }
 
 }
