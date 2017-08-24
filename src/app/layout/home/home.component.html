@@ -13,6 +13,11 @@
     <hr>
     <div class="row">
         <div *ngFor="let new of buildingInfo.news; let i = index" class="col-xl-3 col-lg-6">
+            <div [ngSwitch]="new.type">
+                <app-stat *ngSwitchCase="'Information'" [bgClass]="'card-info'" [icon]="'fa-comments'"  [label]="new.title" [data]="new.description"></app-stat>
+                <app-stat *ngSwitchCase="'Urgent'" [bgClass]="'card-danger'" [icon]="'fa-support'" [label]="new.title" [data]="new.description"></app-stat>
+                <app-stat *ngSwitchCase="'Warning'" [bgClass]="'card-tasks'" [icon]="'fa-comments'" [label]="new.title" [data]="new.description"></app-stat>
+            </div>
 
         </div>
 

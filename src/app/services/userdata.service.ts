@@ -18,15 +18,15 @@ export class UserdataService {
             name: 'Edificio Regina',
             imagePath: 'assets/images/slider1.jpg',
             news: [{
-                header: 'Luz',
+                title: 'Luz',
                 description: 'Se realizara un corte de luz desde las 9pm a 10pm en dia 3 de septiembre de 2017',
                 type:'Urgent'
             },{
-                header: 'Gasista',
+                title: 'Gasista',
                 description: 'Se contara con la presencia del gasista a partir de las 13hs.',
                 type:'Information'
             },{
-                header: 'Expensas',
+                title: 'Expensas',
                 description: 'El pago de expensas se realiza en el NUEVO horario de 18hs a 21hs',
                 type:'Information'
             }]
