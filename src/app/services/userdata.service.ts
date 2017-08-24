@@ -11,20 +11,24 @@ export class UserdataService {
     userInfo:UserInfo;
     buildingInfo:BuildingInfo;
 
-    private apiUrl = 'http://portalsigic.glubatec.com/api/';//'http://localhost:39048/api/';
+    private apiUrl = 'http://portalsigic.glubatec.com/api/';
 
     constructor(public http:Http) {
    
     }
 
     getHeaderInfo() {
-        return this.http.get(this.apiUrl + 'User').map(res=>res.json());
-        //return this.http.get(this.apiUrl + 'User', this.getOptions()).map(res=>res.json());
+        return this.http.get(this.getUrl('User/GetDataUser'), this.getOptions()).map(res=>res.json());
     }
 
     private getOptions(): RequestOptions {
-        let auth = new Headers({'Authorization': 'Bearer' + localStorage.getItem('token')});
+        let auth = new Headers({'Authorization': 'Bearer ' + localStorage.getItem('token')});
         let options = new RequestOptions({ headers: auth });
         return options;
+    }
+
+    private getUrl(modelo:string)
+    {
+        return this.apiUrl + modelo;
     }
 }

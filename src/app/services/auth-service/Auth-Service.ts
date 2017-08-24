@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/observable';
 @Injectable()
 
 export class AuthService {
-    private apiUrl = 'http://portalsigic.glubatec.com/api/';//'http://localhost:39048/api/';
+    private apiUrl = 'http://portalsigic.glubatec.com/api/';
 
     constructor(private http: Http) { }
 
@@ -14,8 +14,7 @@ export class AuthService {
         let body='username=' + username + '&password=' + password;
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({'headers': headers});
-        return this.http.get(this.getUrl('Token/Login?username='+username+'&password='+password), options).map(this.getDatos);
-        //return this.http.post(this.getUrl('Token/Login'), body, options).map(this.getDatos);
+        return this.http.post(this.getUrl('Token/Login'), body, options).map(this.getDatos);
     }
 
     logout(): void {
