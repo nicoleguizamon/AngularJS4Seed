@@ -19,10 +19,20 @@ userCustom:UserCustom;
                 this.toggleSidebar();
             }
         });
+
+        this.userCustom = {
+            fullname:'Nico Leguizamon',
+            buildingName:'Edifico Regina'
+        };
     }
 
     ngOnInit() {
-        this.userCustom = this.userdataService.getHeaderInfo();
+        this.userdataService.getHeaderInfo().subscribe((post)=> {
+            this.userCustom = {
+                fullname: post.fullname,
+                buildingName:post.buildingName
+            };
+        });
     }
 
     toggleSidebar() {

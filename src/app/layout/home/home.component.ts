@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInfo } from '../../interfaces/user-info';
 import { BuildingInfo } from '../../interfaces/building-info';
+import { News } from '../../interfaces/news';
 import { UserdataService } from '../../services/userdata.service';
 
 
@@ -13,7 +14,9 @@ export class HomeComponent implements OnInit {
 buildingInfo:BuildingInfo;
 userInfo:UserInfo;
 
-  constructor(private userdataService: UserdataService) { }
+  constructor(private userdataService: UserdataService) {
+
+  }
 
   ngOnInit() {
     this.buildingInfo = this.userdataService.getBuildingNews();

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth-service/Auth-Service';
-import { Usuario } from "../classes/usuario";
 import { routerTransition } from '../router.animations';
 import { FormsModule } from '@angular/forms';
 
@@ -13,8 +12,9 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class LoginComponent implements OnInit {
-    model: Usuario = new Usuario();
-    error: string = '';
+    username: string='';
+    password: string='';
+    error: string='';
     loading: boolean = false;
 
     constructor(public router: Router, private authenticationService: AuthService) {
@@ -26,10 +26,11 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-         localStorage.setItem('token',"TokenGenerado");
-        this.router.navigate(['/home']);
-        /*this.loading = true;
-        this.authenticationService.login(this.model).subscribe(result => {
+        /*localStorage.setItem('token',"TokenGenerado");
+        this.router.navigate(['/home']);*/
+
+        this.loading = true;
+        this.authenticationService.login(this.username, this.password).subscribe(result => { 
             if (result == true)
             {
                 this.router.navigate(['/']);
@@ -37,6 +38,6 @@ export class LoginComponent implements OnInit {
                 this.error = 'Credenciales incorrectas';
                 this.loading = false;
             }
-        });*/
+        });
     }
 }
