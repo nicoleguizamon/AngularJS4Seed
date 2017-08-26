@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DownloadFileService } from '../../services/download-file.service';
 
 @Component({
   selector: 'app-expenses',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExpensesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private downloadFileService: DownloadFileService) { }
 
   ngOnInit() {
+
   }
 
+  downloadFile() {
+    this.downloadFileService.download();
+  }
 }
