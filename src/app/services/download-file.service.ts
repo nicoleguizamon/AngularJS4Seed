@@ -4,7 +4,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class DownloadFileService {
-  private apiUrl = 'http://localhost:39048/api/';
+  private apiUrl = 'http://portalsigic.glubatec.com/api/';
   
   constructor(public http: Http) {
 
