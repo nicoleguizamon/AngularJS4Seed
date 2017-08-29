@@ -3,8 +3,8 @@ import { Headers, RequestOptions, ResponseContentType } from '@angular/http';
 
 @Injectable()
 export class BaseService {
-  //private apiUrl = 'http://portalsigic.glubatec.com/api/';
-  private apiUrl = 'http://localhost:39048/api/';
+  private apiUrl = 'http://portalsigic.glubatec.com/api/';
+  //private apiUrl = 'http://localhost:39048/api/';
 
   constructor() { }
 
@@ -17,7 +17,7 @@ export class BaseService {
     let auth = new Headers({'Authorization': 'Bearer ' + localStorage.getItem('token')});
     let options = new RequestOptions({ headers: auth });
     if(responseType != null) {
-      options.responseType = responseType; 
+      options.responseType = responseType;
     }
 
     return options;
