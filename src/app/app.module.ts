@@ -8,6 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
+import { BaseService } from './services/base-service.service';
 import { UserdataService } from './services/userdata.service';
 import { DownloadFileService } from './services/download-file.service';
 import { AuthService } from './services/auth-service/Auth-Service';
@@ -35,7 +36,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [AuthGuard, AuthService, UserdataService, DownloadFileService],
+    providers: [AuthGuard, AuthService, BaseService, UserdataService, DownloadFileService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

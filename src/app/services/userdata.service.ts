@@ -4,16 +4,16 @@ import 'rxjs/add/operator/map';
 import { UserCustom } from '../interfaces/user-custom';
 import { UserInfo } from '../interfaces/user-info';
 import { BuildingInfo } from '../interfaces/building-info';
+import { BaseService } from './base-service.service';
 
 @Injectable()
-export class UserdataService {
+export class UserdataService extends BaseService {
     userCustom: UserCustom;
     userInfo:UserInfo;
     buildingInfo:BuildingInfo;
 
-    private apiUrl = 'http://portalsigic.glubatec.com/api/';
-
     constructor(public http:Http) {
+        super();
         /*this.buildingInfo = {
             name: 'Edificio Regina',
             imagePath: 'assets/images/slider1.jpg',
@@ -39,16 +39,5 @@ export class UserdataService {
 
     getHeaderInfo() {
         return this.http.get(this.getUrl('User/GetDataUser'), this.getOptions()).map(res=>res.json());
-    }
-
-    private getOptions(): RequestOptions {
-        let auth = new Headers({'Authorization': 'Bearer ' + localStorage.getItem('token')});
-        let options = new RequestOptions({ headers: auth });
-        return options;
-    }
-
-    private getUrl(modelo:string)
-    {
-        return this.apiUrl + modelo;
     }
 }

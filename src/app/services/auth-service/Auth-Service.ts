@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/observable';
+import { BaseService } from '../base-service.service';
 
 @Injectable()
 
-export class AuthService {
-    private apiUrl = 'http://portalsigic.glubatec.com/api/';
+export class AuthService extends BaseService  {
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) { super(); }
 
     login(username:string, password:string): Observable<boolean>
     {
@@ -22,7 +22,7 @@ export class AuthService {
     }
 
     private getDatos(data: Response) {
-        let datos=data.json();
+        let datos = data.json();
         //if (datos && datos.access_token)
         if (datos)
         {
@@ -31,10 +31,5 @@ export class AuthService {
             return true;
         }
         return false;
-    }
-
-    private getUrl(modelo:string)
-    {
-        return this.apiUrl + modelo;
     }
 }

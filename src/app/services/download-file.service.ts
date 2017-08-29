@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod, ResponseContentType } from '@angular/http';
 import 'rxjs/Rx';
+import { BaseService } from './base-service.service';
 
 @Injectable()
-export class DownloadFileService {
-  private apiUrl = 'http://portalsigic.glubatec.com/api/';
+export class DownloadFileService extends BaseService {
   
-  constructor(public http: Http) {
-
-  }
+  constructor(public http: Http) { super(); }
 
   download() { //get file from service
-    return this.http.post(this.getUrl('User/DownloadFile'), JSON.stringify({id:1}), this.getOptions())
+    return this.http.post(this.getUrl('User/DownloadFile'), JSON.stringify({id:1}), this.getOptions(ResponseContentType.ArrayBuffer))
                 .subscribe(data => this.downloadFile(data)),
                     error => console.log("Error downloading the file.");
   }
@@ -32,16 +30,5 @@ export class DownloadFileService {
     }
     window.URL.revokeObjectURL(url);
     //window.open(url);
-  }
-
-  private getOptions(): RequestOptions {
-    let auth = new Headers({'Authorization': 'Bearer ' + localStorage.getItem('token')});
-    let options = new RequestOptions({ headers: auth, responseType: ResponseContentType.ArrayBuffer });//method: RequestMethod.Post,
-    return options;
-  }
-
-  private getUrl(modelo:string)
-  {
-      return this.apiUrl + modelo;
   }
 }
