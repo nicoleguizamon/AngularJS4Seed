@@ -17,7 +17,7 @@ export class BaseService {
     let auth = new Headers({'Authorization': 'Bearer ' + localStorage.getItem('token')});
     let options = new RequestOptions({ headers: auth });
     if(responseType != null) {
-      options.responseType = responseType; 
+      options.responseType = responseType;
     }
 
     return options;
