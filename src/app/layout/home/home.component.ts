@@ -3,6 +3,7 @@ import { UserInfo } from '../../interfaces/user-info';
 import { BuildingInfo } from '../../interfaces/building-info';
 import { News } from '../../interfaces/news';
 import { UserdataService } from '../../services/userdata.service';
+import { SpinnerService } from '../../services/spinner.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
 buildingInfo:BuildingInfo;
 userInfo:UserInfo;
 
-  constructor(private userdataService: UserdataService) {
+  constructor(private userdataService: UserdataService,private spinnerService: SpinnerService) {
       this.buildingInfo = {} as BuildingInfo;
 
   }
@@ -28,6 +29,7 @@ userInfo:UserInfo;
       }
       console.log(this.buildingInfo);
     });
+    //this.spinnerService.setTrue();
   }
 
 }

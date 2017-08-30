@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth-service/Auth-Service';
+import { SpinnerService } from '../services/spinner.service';
 import { routerTransition } from '../router.animations';
 import { FormsModule } from '@angular/forms';
 
@@ -17,26 +18,29 @@ export class LoginComponent implements OnInit {
     error: string='';
     loading: boolean = false;
 
-    constructor(public router: Router, private authenticationService: AuthService) {
+    constructor(public router: Router, private authenticationService: AuthService,
+        private spinnerService: SpinnerService) {
 
     }
 
     ngOnInit() {
         this.authenticationService.logout();
+        //this.spinnerService.toggleSidebar();
     }
 
     login() {
         /*localStorage.setItem('token',"TokenGenerado");
         this.router.navigate(['/home']);*/
 
-        this.loading = true;
-        this.authenticationService.login(this.username, this.password).subscribe(result => { 
+        this.spinnerService.setTrue();
+        this.authenticationService.login(this.username, this.password).subscribe(result => {
             if (result == true)
             {
                 this.router.navigate(['/']);
+                this.spinnerService.setFalse();
             } else {
                 this.error = 'Credenciales incorrectas';
-                this.loading = false;
+                this.spinnerService.setFalse();
             }
         });
     }
