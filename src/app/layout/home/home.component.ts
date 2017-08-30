@@ -21,6 +21,7 @@ userInfo:UserInfo;
   }
 
   ngOnInit() {
+    this.spinnerService.setTrue();
     this.userdataService.getBuildingNews().subscribe((post)=> {
       this.buildingInfo = {
           name: post.name,
@@ -29,7 +30,7 @@ userInfo:UserInfo;
       }
       console.log(this.buildingInfo);
     });
-    //this.spinnerService.setTrue();
+    this.spinnerService.setFalse();
   }
 
 }

@@ -1,5 +1,20 @@
 <div>
     <h2 class="text-muted"><small>Noticias</small></h2>
     <hr/>
+    <div  *ngFor="let new of news; let i = index">
+            <div class="row">
+                    <div class="col-xl-12 text-xs-center">
+                        <div class="card card-default">
+                            <div class="card-block">
+                                {{new.title}}
+                                <br/>
+                                {{new.summary}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+    </div>
+
 </div>
 
