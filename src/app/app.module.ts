@@ -12,6 +12,8 @@ import { BaseService } from './services/base-service.service';
 import { UserdataService } from './services/userdata.service';
 import { DownloadFileService } from './services/download-file.service';
 import { AuthService } from './services/auth-service/Auth-Service';
+import { LoginService } from './services/login.service';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -36,7 +38,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [AuthGuard, AuthService, BaseService, UserdataService, DownloadFileService],
+    providers: [AuthGuard, AuthService, BaseService, UserdataService, DownloadFileService, LoginService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
