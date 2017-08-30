@@ -13,8 +13,12 @@ export class BaseService {
       return this.apiUrl + modelo;
   }
 
-  public getOptions(responseType?: ResponseContentType): RequestOptions {
+  public getOptions(responseType?: ResponseContentType, withoutAuthentication?:boolean): RequestOptions {
     let auth = new Headers({'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    if(withoutAuthentication !=null && withoutAuthentication == true)
+    {
+
+    }
     let options = new RequestOptions({ headers: auth });
     if(responseType != null) {
       options.responseType = responseType;

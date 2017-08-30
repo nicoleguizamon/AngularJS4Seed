@@ -2,19 +2,22 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod, ResponseContentType } from '@angular/http';
 import 'rxjs/Rx';
 import { BaseService } from './base-service.service';
+import { SpinnerService } from "../services/spinner.service";
 
 @Injectable()
 export class DownloadFileService extends BaseService {
   
-  constructor(public http: Http) { super(); }
+  constructor(public http: Http, private spinnerService: SpinnerService) { super(); }
 
   download() { //get file from service
+    this.spinnerService.setTrue();
     return this.http.post(this.getUrl('User/DownloadFile'), JSON.stringify({id:1}), this.getOptions(ResponseContentType.ArrayBuffer))
                 .subscribe(data => this.downloadFile(data)),
                     error => console.log("Error downloading the file.");
   }
 
   downloadFile(data: Response) {
+    this.spinnerService.setFalse();
     var blob = new Blob([data.arrayBuffer()], { type: 'application/pdf' }); //types: 'application/pdf' 'text/csv' 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     var url = window.URL.createObjectURL(blob);
 

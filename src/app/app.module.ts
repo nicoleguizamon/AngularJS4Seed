@@ -10,10 +10,12 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { BaseService } from './services/base-service.service';
 import { UserdataService } from './services/userdata.service';
-import { SpinnerService } from './services/spinner.service';
 import { DownloadFileService } from './services/download-file.service';
 import { AuthService } from './services/auth-service/Auth-Service';
-import { LoadingModule } from 'ngx-loading';
+import { LoadingModule } from "ngx-loading";
+import { SpinnerService } from "./services/spinner.service";
+import { LoginService } from './services/login.service';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -23,7 +25,6 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
     declarations: [
         AppComponent
-
     ],
     imports: [
         BrowserModule,
@@ -40,7 +41,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [AuthGuard, AuthService, BaseService, UserdataService, DownloadFileService, SpinnerService],
+    providers: [AuthGuard, AuthService, BaseService, UserdataService, DownloadFileService, LoginService, SpinnerService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
