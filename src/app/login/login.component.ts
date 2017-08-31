@@ -5,6 +5,7 @@ import { routerTransition } from '../router.animations';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { SpinnerService } from "../services/spinner.service";
+import { Login } from "../interfaces/login";
 
 @Component({
     selector: 'app-login',
@@ -16,14 +17,12 @@ import { SpinnerService } from "../services/spinner.service";
 export class LoginComponent implements OnInit {
     urlclientImage: string;
     clientname: string;
-    username: string;
-    password: string;
     error: string;
-    loading: boolean = false;
+    loginModel: Login;
 
     constructor(public router: Router, private authenticationService: AuthService, 
                     private loginService: LoginService, private spinnerService: SpinnerService) {
-
+        this.loginModel= {} as Login;
     }
 
     ngOnInit() {
@@ -34,9 +33,9 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    login() {
+    onSubmit() {
         this.spinnerService.setTrue();
-        this.authenticationService.login(this.username, this.password).subscribe(result => { 
+        this.authenticationService.login(this.loginModel.username, this.loginModel.password).subscribe(result => { 
             if (result == true)
             {
                 this.router.navigate(['/']);

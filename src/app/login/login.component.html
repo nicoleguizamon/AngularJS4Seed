@@ -3,18 +3,18 @@
         <div class="col-md-4 push-md-4">
             <img src= "{{ urlclientImage }}" width="150px" class="user-avatar" />
             <h1>{{ clientname }}</h1>
-            <form role="form">
+            <form role="form" #formLogin="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" name="username" [(ngModel)]="username" class="form-control input-underline input-lg" placeholder="Email">
+                        <input type="text" name="username" [(ngModel)]="loginModel.username" class="form-control input-underline input-lg" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" [(ngModel)]="password" class="form-control input-underline input-lg" placeholder="Password">
+                        <input type="password" name="password" [(ngModel)]="loginModel.password" class="form-control input-underline input-lg" placeholder="Contraseña" required>
                     </div>
                 </div>
-                <a class="btn rounded-btn" (click)="login()"> Log in </a>
-                &nbsp;
-                <!--a class="btn rounded-btn" [routerLink]="['/signup']">Register</a-->
+                <button type="submit" class="btn rounded-btn" [disabled]="!formLogin.valid" >Log in</button>
+                <!--a class="btn rounded-btn" (click)="login()"> Log in </a-->
+                <!--&nbsp;<a class="btn rounded-btn" [routerLink]="['/signup']">Register</a-->
             </form>
         </div>
     </div>
