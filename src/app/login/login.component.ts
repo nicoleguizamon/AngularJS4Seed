@@ -16,6 +16,7 @@ import { Login } from "../interfaces/login";
 
 export class LoginComponent implements OnInit {
     urlclientImage: string;
+    urlBuildingImage: string;
     clientname: string;
     error: string;
     loginModel: Login;
@@ -28,8 +29,9 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         this.authenticationService.logout();
         this.loginService.getCompanyInfo().subscribe((post)=> {
-            this.urlclientImage = post.contacto;
-            this.clientname =post.administracion;
+            this.clientname =post.administracion;//Nombre del Edificio (Consorcio)
+            this.urlclientImage = post.contacto;//Logo de la administracion?? Consorcio??
+            this.urlBuildingImage =post.administracion;//Imagen del consorcio(Fondo Pantalla)
         });
     }
 
