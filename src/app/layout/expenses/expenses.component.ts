@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DownloadFileService } from '../../services/download-file.service';
+import { FileUploadModule } from 'primeng/primeng';
 
 @Component({
   selector: 'app-expenses',
