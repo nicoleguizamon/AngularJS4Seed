@@ -3,5 +3,5 @@
     <hr/>
     <button type="button" (click)="downloadFile()" class = "btn btn-success">Descargar Expensa</button>
 
-    <p-fileUpload name="myfile[]" multiple="multiple" url="./upload.php"></p-fileUpload>
+    <p-fileUpload name="myfile[]" multiple="multiple" customUpload="true" (uploadHandler)="uploadFile($event)"></p-fileUpload>
 </div>

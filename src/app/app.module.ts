@@ -15,6 +15,7 @@ import { AuthService } from './services/auth-service/Auth-Service';
 import { LoadingModule } from "ngx-loading";
 import { SpinnerService } from "./services/spinner.service";
 import { LoginService } from './services/login.service';
+import { UploadFileService } from './services/upload-file.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -41,7 +42,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [AuthGuard, AuthService, BaseService, UserdataService, DownloadFileService, LoginService, SpinnerService],
+    providers: [AuthGuard, AuthService, BaseService, UserdataService, DownloadFileService, LoginService, SpinnerService, UploadFileService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
