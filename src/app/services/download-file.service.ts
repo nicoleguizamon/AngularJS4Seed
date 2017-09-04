@@ -11,7 +11,7 @@ export class DownloadFileService extends BaseService {
 
   download() { //get file from service
     this.spinnerService.setTrue();
-    return this.http.post(this.getUrl('User/DownloadFile'), JSON.stringify({id:1}), this.getOptions(ResponseContentType.ArrayBuffer))
+    return this.http.get(this.getUrl('User/DownloadFile'), this.getOptions(ResponseContentType.ArrayBuffer))
                 .subscribe(data => this.downloadFile(data)),
                     error => console.log("Error downloading the file.");
   }
