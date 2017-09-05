@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DownloadFileService } from '../../services/download-file.service';
 import { FileUploadModule } from 'primeng/primeng';
-import { UploadFileService } from '../../services/upload-file.service';
+import { Expenses } from "../../interfaces/expenses";
+import { SpinnerService } from '../../services/spinner.service';
+import { UserdataService } from '../../services/userdata.service';
 
 @Component({
   selector: 'app-expenses',
@@ -9,22 +11,21 @@ import { UploadFileService } from '../../services/upload-file.service';
   styleUrls: ['./expenses.component.scss']
 })
 export class ExpensesComponent implements OnInit {
-
-  constructor(private downloadFileService: DownloadFileService, private uploadFileService: UploadFileService) { }
+  expenses:Expenses[];
+  constructor(private downloadFileService: DownloadFileService, private userdataService: UserdataService, 
+                    private spinnerService: SpinnerService) {
+      this.expenses = [];
+   }
 
   ngOnInit() {
-
+    this.spinnerService.setTrue();
+    this.userdataService.getDetailedExpenses().subscribe((post)=> {
+      this.expenses = post;
+    });
+    this.spinnerService.setFalse();
   }
 
   downloadFile() {
     this.downloadFileService.download();
-  }
-
-  uploadFile(event) {
-    let fileList: FileList = event.files;
-    if(fileList.length > 0) {
-        //let file: File = fileList[0];
-        this.uploadFileService.upload(fileList);
-    }
   }
 }

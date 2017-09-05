@@ -19,9 +19,13 @@ export class UserdataService extends BaseService {
     getBuildingNews(){
         return this.http.get(this.getUrl('Building/GetDataBuilding'), this.getOptions()).map(res=>res.json());
     }
-//TODO: Change to real API call
+
     getDetailedNews(){
         return this.http.get(this.getUrl('Building/GetDataBuilding'), this.getOptions()).map(res=>res.json().news);
+    }
+
+    getDetailedExpenses(){
+        return this.http.get(this.getUrl('User/GetDataExpenses'), this.getOptions()).map(res=>res.json());
     }
 
     getHeaderInfo() {

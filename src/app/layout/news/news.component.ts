@@ -9,8 +9,8 @@ import { News } from '../../interfaces/news';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-    news:News[];
-  constructor(private userdataService: UserdataService,private spinnerService: SpinnerService) {
+  news:News[];
+  constructor(private userdataService: UserdataService, private spinnerService: SpinnerService) {
     this.news = [];
   }
 

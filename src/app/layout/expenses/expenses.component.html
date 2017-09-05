@@ -1,7 +1,29 @@
 <div>
     <h2 class="text-muted"><small>Expensas</small></h2>
     <hr/>
+    <div #deuda class="card mb-3">
+        <div class="card-header">
+            DETALLES DE SU DEUDA:
+        </div>
+        <div class="card-block table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Concepto Deuda</th>
+                    <th>Período</th>
+                    <th>Importe</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let expense of expenses;">
+                    <td>{{ expense.concept }}</td>
+                    <td>{{ expense.period }}</td>
+                    <td>{{ expense.amount }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr/>
     <button type="button" (click)="downloadFile()" class = "btn btn-success">Descargar Expensa</button>
-
-    <p-fileUpload name="myfile[]" multiple="multiple" customUpload="true" (uploadHandler)="uploadFile($event)" chooseLabel="Choosee" uploadLabel="Uploadd" cancelLabel="Cancell"></p-fileUpload>
 </div>

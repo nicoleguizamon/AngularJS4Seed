@@ -12,6 +12,8 @@ export class UploadFileService extends BaseService {
     this.spinnerService.setTrue();
     
     let formData:FormData = new FormData();
+    formData.append('type', '1');
+    formData.append('text', 'jhsdnmguyhjerjbvhjsdbhdfghbgdfgfd');
     for (var index = 0; index < fileList.length; index++) {
       formData.append('uploadFile', fileList[index], fileList[index].name);
     }
