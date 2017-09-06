@@ -9,6 +9,6 @@ export class LoginService extends BaseService {
   constructor(public http:Http) { super(); }
 
   getCompanyInfo() {
-    return this.http.get(this.getUrl('Company'), this.getOptions(null, true)).map(res=>res.json());
+    return this.http.get(this.getUrl('Company/GetDataCompany'), this.getOptions(null, true)).map(res=>res.json());
   }
 }
