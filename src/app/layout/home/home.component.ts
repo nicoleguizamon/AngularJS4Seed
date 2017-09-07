@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfo } from '../../interfaces/user-info';
 import { BuildingInfo } from '../../interfaces/building-info';
 import { News } from '../../interfaces/news';
 import { UserdataService } from '../../services/userdata.service';
@@ -11,8 +10,7 @@ import { SpinnerService } from "../../services/spinner.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-buildingInfo:BuildingInfo;
-userInfo:UserInfo;
+  buildingInfo:BuildingInfo;
 
   constructor(private userdataService: UserdataService, private spinnerService: SpinnerService) {
       this.buildingInfo = {} as BuildingInfo;

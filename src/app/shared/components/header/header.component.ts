@@ -27,8 +27,9 @@ export class HeaderComponent implements OnInit {
         this.userdataService.getHeaderInfo().subscribe((post)=> {
             this.userCustom = {
                 fullname: post.fullname,
-                buildingName:post.buildingName
-            };
+                buildings: post.buildings
+            }
+            console.log(this.userCustom);
         });
     }
 
