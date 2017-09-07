@@ -16,7 +16,6 @@ userInfo:UserInfo;
 
   constructor(private userdataService: UserdataService, private spinnerService: SpinnerService) {
       this.buildingInfo = {} as BuildingInfo;
-
   }
 
   ngOnInit() {

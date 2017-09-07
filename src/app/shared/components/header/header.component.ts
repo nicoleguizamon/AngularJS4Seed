@@ -10,20 +10,17 @@ import { UserCustom } from '../../../interfaces/user-custom';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-userCustom:UserCustom;
+    userCustom:UserCustom;
 
     constructor(private translate: TranslateService, public router: Router
-        , private userdataService: UserdataService) {
+                    , private userdataService: UserdataService) {
         this.router.events.subscribe((val) => {
             if (val instanceof NavigationEnd && window.innerWidth <= 992) {
                 this.toggleSidebar();
             }
         });
 
-        this.userCustom = {
-            fullname:'Nico Leguizamon',
-            buildingName:'Edifico Regina'
-        };
+        this.userCustom = {} as UserCustom;
     }
 
     ngOnInit() {
