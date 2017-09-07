@@ -31,6 +31,12 @@ export class HeaderComponent implements OnInit {
             }
             console.log(this.userCustom);
         });
+
+        if(this.userCustom.buildings != null && this.userCustom.buildings.length > 0)
+        {
+            alert(this.userCustom.buildings[0].id);
+            localStorage.setItem("committeeId", this.userCustom.buildings[0].id);
+        }
     }
 
     toggleSidebar() {
