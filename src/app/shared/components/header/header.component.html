@@ -3,8 +3,8 @@
         <button class="navbar-toggler navbar-toggler-right" (click)="toggleSidebar()">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="javascript:void(0)">{{userCustom.buildings[0].name}}</a>
-        <a *ngIf="userCustom.buildings.length > 4" class="navbar-brand" href="javascript:void(0)">Cambiar</a>
+        <a *ngIf="userCustom.buildings" class="navbar-brand" href="javascript:void(0)">{{userCustom.buildings[0].name}}</a>
+        <a *ngIf="userCustom.buildings && userCustom.buildings.length > 1" class="btn btn-*" href="javascript:void(0)">Cambiar</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto mt-2 mt-md-0">
                 <li class="nav-item dropdown" ngbDropdown>
