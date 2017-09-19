@@ -3,11 +3,23 @@
         <button class="navbar-toggler navbar-toggler-right" (click)="toggleSidebar()">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a *ngIf="userCustom.buildings" class="navbar-brand" href="javascript:void(0)">{{userCustom.buildings[0].name}}</a>
+        <a *ngIf="userCustom.buildings" class="navbar-brand" href="javascript:void(0)">{{ buildingName }}</a>
         <div *ngIf="userCustom.buildings && userCustom.buildings.length > 1">
-            <a class="btn btn-*" href="javascript:void(0)" (click)="showDialog()">Cambiar</a>
-            <p-dialog header="Title" [(visible)]="display">
-                Content
+            <a class="btn btn-*" href="javascript:void(0)" (click)="showDialogBuildings()">Cambiar</a>
+            <p-dialog header="Cambiar Edificio" [(visible)]="displayBuildings">
+                <fieldset class="form-group">
+                    <legend>Edificios</legend>
+                    <div *ngFor="let building of userCustom.buildings" class="form-check">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optionsRadios" (click)="buildingSelectedId=building.id" id={{building.id}} value={{building.id}} [checked] = "buildingSelectedId == building.id ? true : false" >
+                        {{ building.name }}
+                      </label>
+                    </div>
+                </fieldset>
+                <p-footer>
+                    <button type="button" pButton icon="fa-check" (click)="selectBuilding()" label="Yes"></button>
+                    <button type="button" pButton icon="fa-close" (click)="displayBuildings=false" label="No"></button>
+                </p-footer>
             </p-dialog>
         </div>
         <div class="collapse navbar-collapse">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { UserdataService } from '../../../services/userdata.service';
@@ -11,14 +11,13 @@ import { UserCustom } from '../../../interfaces/user-custom';
 })
 export class HeaderComponent implements OnInit {
     userCustom:UserCustom;
-    display: boolean = false;
-    
-    showDialog() {
-        this.display = true;
-    }
-    
-    constructor(private translate: TranslateService, public router: Router
-                    , private userdataService: UserdataService) {
+    // ************************************ POPUP BUILDINGS *************************************
+    displayBuildings: boolean = false;
+    buildingSelectedId: string;
+    buildingName:string;
+
+    constructor(private translate: TranslateService, public router: Router,
+                private userdataService: UserdataService) {
         this.router.events.subscribe((val) => {
             if (val instanceof NavigationEnd && window.innerWidth <= 992) {
                 this.toggleSidebar();
@@ -34,14 +33,12 @@ export class HeaderComponent implements OnInit {
                 fullname: post.fullname,
                 buildings: post.buildings
             }
-            console.log(this.userCustom);
+            if(post.buildings != null && post.buildings.length > 0)
+            {
+                localStorage.setItem("committeeId", this.userCustom.buildings[0].id);
+                this.buildingName = this.userCustom.buildings[0].name;
+            }
         });
-
-        if(this.userCustom.buildings != null && this.userCustom.buildings.length > 0)
-        {
-            alert(this.userCustom.buildings[0].id);
-            localStorage.setItem("committeeId", this.userCustom.buildings[0].id);
-        }
     }
 
     toggleSidebar() {
@@ -60,5 +57,17 @@ export class HeaderComponent implements OnInit {
 
     changeLang(language: string) {
         this.translate.use(language);
+    }
+
+    // ************************************ POPUP BUILDINGS *************************************
+    showDialogBuildings() {
+        this.buildingSelectedId = localStorage.getItem("committeeId");
+        this.displayBuildings = true;
+    }
+
+    selectBuilding() {
+        localStorage.setItem("committeeId", this.buildingSelectedId);
+        this.displayBuildings = false;
+        this.buildingName = this.userCustom.buildings.find(x => x.id == this.buildingSelectedId).name;
     }
 }
