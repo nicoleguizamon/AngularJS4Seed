@@ -16,16 +16,16 @@ export class UserdataService extends BaseService {
         super();
     }
 
-    getBuildingNews(){
-        return this.http.get(this.getUrl('Building/GetDataBuilding'), this.getOptions()).map(res=>res.json());
+    getBuildingNews() {
+        return this.http.get(this.getUrl('Building/GetDataBuilding?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json());
     }
 
-    getDetailedNews(){
-        return this.http.get(this.getUrl('Building/GetDataBuilding'), this.getOptions()).map(res=>res.json().news);
+    getDetailedNews() {
+        return this.http.get(this.getUrl('Building/GetDataBuilding?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json().news);
     }
 
-    getDetailedExpenses(){
-        return this.http.get(this.getUrl('User/GetDataExpenses'), this.getOptions()).map(res=>res.json());
+    getDetailedExpenses() {
+        return this.http.get(this.getUrl('User/GetDataExpenses?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json());
     }
 
     getHeaderInfo() {
