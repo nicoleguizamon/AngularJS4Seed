@@ -1,6 +1,12 @@
 <div>
     <h2 class="text-muted"><small>Expensas</small></h2>
     <hr/>
+
+    <p-dialog header="Title" [(visible)]="display">
+        Content
+    </p-dialog>
+    <button type="button" (click)="showDialog()" class = "btn btn-success">Abrir</button>
+
     <div #deuda class="card mb-3">
         <div class="card-header">
             DETALLES DE SU DEUDA:

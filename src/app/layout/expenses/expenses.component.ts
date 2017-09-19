@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DownloadFileService } from '../../services/download-file.service';
-import { FileUploadModule } from 'primeng/primeng';
 import { Expenses } from "../../interfaces/expenses";
 import { SpinnerService } from '../../services/spinner.service';
 import { UserdataService } from '../../services/userdata.service';
@@ -12,6 +11,12 @@ import { UserdataService } from '../../services/userdata.service';
 })
 export class ExpensesComponent implements OnInit {
   expenses:Expenses[];
+  display: boolean = false;
+  
+  showDialog() {
+      this.display = true;
+  }
+
   constructor(private downloadFileService: DownloadFileService, private userdataService: UserdataService, 
                     private spinnerService: SpinnerService) {
       this.expenses = [];
