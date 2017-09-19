@@ -11,11 +11,6 @@ import { UserdataService } from '../../services/userdata.service';
 })
 export class ExpensesComponent implements OnInit {
   expenses:Expenses[];
-  display: boolean = false;
-  
-  showDialog() {
-      this.display = true;
-  }
 
   constructor(private downloadFileService: DownloadFileService, private userdataService: UserdataService, 
                     private spinnerService: SpinnerService) {

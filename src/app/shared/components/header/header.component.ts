@@ -11,7 +11,12 @@ import { UserCustom } from '../../../interfaces/user-custom';
 })
 export class HeaderComponent implements OnInit {
     userCustom:UserCustom;
-
+    display: boolean = false;
+    
+    showDialog() {
+        this.display = true;
+    }
+    
     constructor(private translate: TranslateService, public router: Router
                     , private userdataService: UserdataService) {
         this.router.events.subscribe((val) => {
