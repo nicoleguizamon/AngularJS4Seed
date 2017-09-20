@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions, ResponseContentType } from '@angular/http';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class BaseService {
