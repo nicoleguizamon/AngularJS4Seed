@@ -40,10 +40,14 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.loginModel.username, this.loginModel.password).subscribe(result => { 
             if (result == true)
             {
-                this.router.navigate(['/']);
+                this.router.navigate(['/home']);
             } else {
                 this.error = 'Credenciales incorrectas';
             }
+            this.spinnerService.setFalse();
+        }, err => {
+            console.log('Credenciales incorrectas');
+            this.error = 'Credenciales incorrectas';
             this.spinnerService.setFalse();
         });
     }
