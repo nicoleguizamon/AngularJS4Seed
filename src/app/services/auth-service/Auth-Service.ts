@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/observable';
 import { BaseService } from '../base-service.service';
-import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService extends BaseService  {
@@ -31,9 +30,5 @@ export class AuthService extends BaseService  {
             return true;
         }
         return false;
-    }
-
-    loggedIn() {
-        return tokenNotExpired();
     }
 }

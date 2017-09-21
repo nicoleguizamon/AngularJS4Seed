@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router, NavigationStart } from '@angular/router';
 import { LayoutComponent } from './layout.component';
+import { JwtHelper } from 'angular2-jwt';
 
 const routes: Routes = [
     {
@@ -17,7 +18,7 @@ const routes: Routes = [
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
-            { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
+            { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' }
         ]
     }
 ];
@@ -26,4 +27,22 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {
+    jwtHelper: JwtHelper = new JwtHelper();
+
+    constructor(router:Router) {
+        router.events.subscribe(event => {
+            if(event instanceof NavigationStart) {
+                var token = localStorage.getItem('token');
+                if (this.jwtHelper.isTokenExpired(token)) {
+                    alert('Token expired');
+                    
+                }
+            }
+            // NavigationEnd
+            // NavigationCancel
+            // NavigationError
+            // RoutesRecognized
+        });
+    }
+}
