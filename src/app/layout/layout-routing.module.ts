@@ -35,8 +35,7 @@ export class LayoutRoutingModule {
             if(event instanceof NavigationStart) {
                 var token = localStorage.getItem('token');
                 if (this.jwtHelper.isTokenExpired(token)) {
-                    alert('Token expired');
-                    
+                    //alert('Token expired');
                 }
             }
             // NavigationEnd
