@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { UserdataService } from '../../../services/userdata.service';
 import { UserCustom } from '../../../interfaces/user-custom';
+import { AuthService } from '../../../services/auth-service/Auth-Service';
 
 @Component({
     selector: 'app-header',
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
     buildingName:string;
 
     constructor(private translate: TranslateService, public router: Router,
-                private userdataService: UserdataService) {
+                private userdataService: UserdataService, private auth: AuthService) {
         this.router.events.subscribe((val) => {
             if (val instanceof NavigationEnd && window.innerWidth <= 992) {
                 this.toggleSidebar();
@@ -57,6 +58,12 @@ export class HeaderComponent implements OnInit {
 
     changeLang(language: string) {
         this.translate.use(language);
+    }
+
+    //Logout when close the browser
+    @HostListener('window:beforeunload', ['$event'])
+    beforeunloadHandler(event) {
+        this.auth.logout();
     }
 
     // ************************************ POPUP BUILDINGS *************************************
