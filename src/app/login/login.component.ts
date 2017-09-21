@@ -37,17 +37,17 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.spinnerService.setTrue();
-        this.authenticationService.login(this.loginModel.username, this.loginModel.password).subscribe(result => { 
+        this.authenticationService.login(this.loginModel.username, this.loginModel.password)
+        .subscribe(result => {
             if (result == true)
             {
                 this.router.navigate(['/home']);
             } else {
-                this.error = 'Credenciales incorrectas';
+                this.error = 'Usuario o contraseña incorrecta';
             }
             this.spinnerService.setFalse();
         }, err => {
-            console.log('Credenciales incorrectas');
-            this.error = 'Credenciales incorrectas';
+            this.error = 'Usuario o contraseña incorrecta';
             this.spinnerService.setFalse();
         });
     }
