@@ -9,7 +9,7 @@ export class DownloadFileService extends BaseService {
   
   constructor(public http: Http, private spinnerService: SpinnerService) { super(); }
 
-  download() { //get file from service
+  download() { //get file from service 
     this.spinnerService.setTrue();
     return this.http.get(this.getUrl('User/DownloadFile?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions(ResponseContentType.ArrayBuffer))
                 .subscribe(data => this.downloadFile(data)),
