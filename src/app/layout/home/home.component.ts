@@ -24,9 +24,7 @@ export class HomeComponent implements OnInit {
           imagePath:post.imagePath,
           news: post.news
       }
-      console.log(this.buildingInfo);
     });
     this.spinnerService.setFalse();
   }
-
 }
