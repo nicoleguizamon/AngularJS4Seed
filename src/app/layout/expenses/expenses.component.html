@@ -1,9 +1,9 @@
 <div>
-    <h2 class="text-muted"><small>Expensas</small></h2>
+    <h2 class="text-muted"><small>DETALLES DE SU DEUDA:</small></h2>
     <hr/>
-    <div #deuda class="card mb-3">
+    <div *ngFor="let expense of expenses;" class="card mb-3">
         <div class="card-header">
-            DETALLES DE SU DEUDA:
+            Unidad: {{ expense.item }}       Periodo: {{ expense.period }}   ${{ expense.amount }}
         </div>
         <div class="card-block table-responsive">
             <table class="table">
@@ -15,10 +15,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let expense of expenses;">
-                    <td>{{ expense.concept }}</td>
-                    <td>{{ expense.period }}</td>
-                    <td>{{ expense.amount }}</td>
+                <tr *ngFor="let detail of expense.details;">
+                    <td>{{ detail.concept }}</td>
+                    <td>{{ detail.period }}</td>
+                    <td>{{ detail.amount }}</td>
                 </tr>
                 </tbody>
             </table>

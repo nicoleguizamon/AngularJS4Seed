@@ -3,8 +3,8 @@ import { Headers, RequestOptions, ResponseContentType } from '@angular/http';
 
 @Injectable()
 export class BaseService {
-  private apiUrl = 'http://portalsigic.glubatec.com/api/';
-  //private apiUrl = 'http://localhost:39048/api/';
+  //private apiUrl = 'http://portalsigic.glubatec.com/api/';
+  private apiUrl = 'http://localhost:39048/api/';
 
   constructor() { }
 
