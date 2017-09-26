@@ -3,7 +3,7 @@
     <hr/>
     <div *ngFor="let expense of expenses;" class="card mb-3">
         <div class="card-header">
-            Unidad: {{ expense.item }}       Periodo: {{ expense.period }}   ${{ expense.amount }}
+            Unidad: {{ expense.item }}       Periodo: {{ expense.period }}   ${{ expense.amount }} <button type="button" (click)="downloadFile(expense.id)" class = "btn btn-success">Descargar Expensa</button>
         </div>
         <div class="card-block table-responsive">
             <table class="table">
@@ -25,5 +25,4 @@
         </div>
     </div>
     <hr/>
-    <button type="button" (click)="downloadFile()" class = "btn btn-success">Descargar Expensa</button>
 </div>

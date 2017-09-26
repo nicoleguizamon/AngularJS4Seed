@@ -25,7 +25,7 @@ export class ExpensesComponent implements OnInit {
     this.spinnerService.setFalse();
   }
 
-  downloadFile() {
-    this.downloadFileService.download();
+  downloadFile(pExpenseId:number) {
+    this.downloadFileService.download(pExpenseId);
   }
 }
