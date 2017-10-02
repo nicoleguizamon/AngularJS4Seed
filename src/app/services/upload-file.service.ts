@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base-service.service';
 import { SpinnerService } from "../services/spinner.service";
-import { Http, Response, Headers, RequestOptions, RequestMethod, ResponseContentType } from '@angular/http';
+import { Response, Headers, RequestOptions, RequestMethod, ResponseContentType, Http } from '@angular/http';
 
 @Injectable()
 export class UploadFileService extends BaseService {
 
-  constructor(public http: Http, private spinnerService: SpinnerService) { super(); }
+  constructor(private spinnerService: SpinnerService, httpService:Http) { super(httpService); } 
 
   upload(fileList: FileList) {
     this.spinnerService.setTrue();
@@ -18,7 +18,7 @@ export class UploadFileService extends BaseService {
       formData.append('uploadFile', fileList[index], fileList[index].name);
     }
     
-    return this.http.post(this.getUrl('User/UploadFile'), formData, this.getOptions())
+    return this.httpPost(this.getUrl('User/UploadFile'), formData, this.getOptions())
                 .subscribe(data => this.spinnerService.setFalse()),
                     error => console.log("Error downloading the file.");
   }

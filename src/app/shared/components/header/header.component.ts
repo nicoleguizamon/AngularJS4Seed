@@ -65,6 +65,10 @@ export class HeaderComponent implements OnInit {
     beforeunloadHandler(event) {
         this.auth.logout();
     }
+    @HostListener('window:unload', ['$event'])
+    unloadHandler(event) {
+        this.auth.logout();
+    }
 
     // ************************************ POPUP BUILDINGS *************************************
     showDialogBuildings() {
