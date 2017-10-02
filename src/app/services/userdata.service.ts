@@ -15,11 +15,19 @@ export class UserdataService extends BaseService {
 
     constructor(httpService:Http) {
         super(httpService);
+        this.buildingInfo = {} as BuildingInfo;
     }
 
     getBuildingNews() {
-        //return this.http.get(this.getUrl('Building/GetDataBuilding?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json());
-        return this.httpGet(this.getUrl('Building/GetDataBuilding?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json());
+        return this.httpGet(this.getUrl('Building/GetDataBuilding?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions())
+                        .map(res=>res.json())
+                        .subscribe((post)=> {
+                            this.buildingInfo = {
+                                name: post.name,
+                                imagePath:post.imagePath,
+                                news: post.news
+                            }
+                        });
     }
 
     getDetailedNews() {

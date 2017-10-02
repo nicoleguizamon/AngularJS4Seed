@@ -10,21 +10,15 @@ import { SpinnerService } from "../../services/spinner.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  buildingInfo:BuildingInfo;
+  //buildingInfo:BuildingInfo;
 
   constructor(private userdataService: UserdataService, private spinnerService: SpinnerService) {
-      this.buildingInfo = {} as BuildingInfo;
+      //this.buildingInfo = {} as BuildingInfo;
   }
 
   ngOnInit() {
     this.spinnerService.setTrue();
-    this.userdataService.getBuildingNews().subscribe((post)=> {
-      this.buildingInfo = {
-          name: post.name,
-          imagePath:post.imagePath,
-          news: post.news
-      }
-    });
+    this.userdataService.getBuildingNews();
     this.spinnerService.setFalse();
   }
 }

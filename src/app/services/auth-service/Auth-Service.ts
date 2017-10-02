@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions, Response, Http } from '@angular/http';
-import { Observable } from 'rxjs/observable';
 import { BaseService } from '../base-service.service';
-
 
 @Injectable()
 export class AuthService extends BaseService  {
 
     constructor(httpService:Http) { super(httpService); }
 
-    login(username:string, password:string): Observable<boolean>
+    login(username:string, password:string)
     {
         let body='username=' + username + '&password=' + password;
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
