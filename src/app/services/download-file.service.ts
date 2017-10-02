@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, RequestMethod, ResponseContentType } from '@angular/http';
+import { Response, Headers, RequestOptions, RequestMethod, ResponseContentType } from '@angular/http';
 import 'rxjs/Rx';
 import { BaseService } from './base-service.service';
 import { SpinnerService } from "../services/spinner.service";
+import { Http } from '@angular/http';
 
 @Injectable()
 export class DownloadFileService extends BaseService {
   
-  constructor(public http: Http, private spinnerService: SpinnerService) { super(); }
+  constructor(private spinnerService: SpinnerService, httpService:Http) { 
+    super(httpService); 
+  }
 
   download(pExpenseId:number) { //get file from service 
     this.spinnerService.setTrue();
-    return this.http.get(this.getUrl('User/DownloadFile?pBuildingId=' + localStorage.getItem("committeeId") + '&pId=' + pExpenseId), this.getOptions(ResponseContentType.ArrayBuffer))
+    return this.httpGet(this.getUrl('User/DownloadFile?pBuildingId=' + localStorage.getItem("committeeId") + '&pId=' + pExpenseId), this.getOptions(ResponseContentType.ArrayBuffer))
                 .subscribe(data => this.downloadFile(data)),
                     error => console.log("Error downloading the file.");
   }

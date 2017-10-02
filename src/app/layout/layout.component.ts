@@ -15,5 +15,4 @@ export class LayoutComponent implements OnInit {
             this.router.navigate(['/home']);
         }
     }
-
 }
