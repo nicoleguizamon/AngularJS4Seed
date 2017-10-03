@@ -5,12 +5,12 @@
         </button>
         <a *ngIf="userCustom.buildings" class="navbar-brand" href="javascript:void(0)">{{ buildingName }}</a>
         <div *ngIf="userCustom.buildings && userCustom.buildings.length > 1">
-            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" (change)="showDialogBuildings()">
-                <option value="" >Elegir...</option>
-                <option *ngFor="let building of buildingOptions" [value]="selectedValue" [value]="building.id">{{building.name}}</option>
+            <select (ng-value)="buildingSelectedId" class="custom-select mb-2 mr-sm-2 mb-sm-0" (change)="selectBuilding(building.value)" #building>
+                <option value="-1" >Elegir...</option>
+                <option *ngFor="let building of buildingOptions" [value]="building.id">{{building.name}}</option>
             </select>
-            <a class="btn btn-*" href="javascript:void(0)" (click)="showDialogBuildings()">Cambiar</a>
-            <p-dialog header="Cambiar Edificio" [(visible)]="displayBuildings">
+            <!--a class="btn btn-*" href="javascript:void(0)" (click)="showDialogBuildings()">Cambiar</a-->
+            <!--p-dialog header="Cambiar Edificio" [(visible)]="displayBuildings">
                 <fieldset class="form-group">
                     <legend>Edificios</legend>
                     <div *ngFor="let building of userCustom.buildings" class="form-check">
@@ -24,7 +24,7 @@
                     <button type="button" pButton icon="fa-check" (click)="selectBuilding()" label="Yes"></button>
                     <button type="button" pButton icon="fa-close" (click)="displayBuildings=false" label="No"></button>
                 </p-footer>
-            </p-dialog>
+            </p-dialog-->
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto mt-2 mt-md-0">

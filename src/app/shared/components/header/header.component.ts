@@ -5,6 +5,7 @@ import { UserdataService } from '../../../services/userdata.service';
 import { UserCustom } from '../../../interfaces/user-custom';
 import { Building } from '../../../interfaces/building';
 import { AuthService } from '../../../services/auth-service/Auth-Service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-header',
@@ -16,10 +17,9 @@ export class HeaderComponent implements OnInit {
     buildingOptions: Building[];
 
     // ************************************ POPUP BUILDINGS *************************************
-    displayBuildings: boolean = false;
-    buildingSelectedId: string;
+    //displayBuildings: boolean = false;
+    buildingSelectedId:string = "-1";
     buildingName:string;
-    selectedValue:string;
 
     constructor(private translate: TranslateService, public router: Router,
                 private userdataService: UserdataService, private auth: AuthService) {
@@ -79,23 +79,20 @@ export class HeaderComponent implements OnInit {
     }
 
     // ************************************ POPUP BUILDINGS *************************************
-    showDialogBuildings() {
+    /*showDialogBuildings() {
         this.buildingSelectedId = localStorage.getItem("committeeId");
         this.displayBuildings = true;
+    }*/
 
-    }
-
-    selectBuilding() {
-        localStorage.setItem("committeeId", this.buildingSelectedId);
-        this.displayBuildings = false;
-        this.buildingName = this.userCustom.buildings.find(x => x.id == this.buildingSelectedId).name;
+    selectBuilding(pBuildingId) {
+        localStorage.setItem("committeeId", pBuildingId);
+        //this.buildingName = this.userCustom.buildings.find(x => x.id == pBuildingId).name;
+        this.buildingSelectedId = "-1";
+        //localStorage.setItem("committeeId", this.buildingSelectedId);
+        //this.displayBuildings = false;
+        //this.buildingName = this.userCustom.buildings.find(x => x.id == this.buildingSelectedId).name;
         if(this.router.url == "/home") {
             this.userdataService.getBuildingNews();
-            //TODO:If your navigate() doesn't change the URL that already shown on the address bar of
-            //your browser, the router has nothing to do. It's not the router's job to refresh the data.
-            //If you want to refresh the data, create a service injected into the component and invoke
-            //the load function on the service. If the new data will be retrieved,
-            //it'll update the view via bindings.
         } else {
             this.router.navigate(['/home']);
         }

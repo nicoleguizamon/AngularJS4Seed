@@ -3,23 +3,38 @@
     <hr/>
     <div *ngFor="let expense of expenses;" class="card mb-3">
         <div class="card-header">
-            Unidad: {{ expense.item }}       Periodo: {{ expense.period }}   ${{ expense.amount }} <button type="button" (click)="downloadFile(expense.id)" class = "btn btn-success">Descargar Expensa</button>
+            <div>
+                Unidad: {{ expense.item }}
+            </div>
+            <div>
+                Periodo: {{ expense.period }}
+            </div>
+            <div>
+                <button type="button" (click)="downloadFile(expense.id)" class = "btn btn-success">Imprimir Comprobante de Pago</button>
+            </div>
         </div>
         <div class="card-block table-responsive">
             <table class="table">
                 <thead>
-                <tr>
-                    <th>Concepto Deuda</th>
-                    <th>Período</th>
-                    <th>Importe</th>
-                </tr>
+                    <tr>
+                        <th>Concepto Deuda</th>
+                        <th>Período</th>
+                        <th >Importe</th>
+                    </tr>
                 </thead>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th></th>
+                        <th>${{ expense.amount }}</th>
+                    </tr>
+                </tfoot>
                 <tbody>
-                <tr *ngFor="let detail of expense.details;">
-                    <td>{{ detail.concept }}</td>
-                    <td>{{ detail.period }}</td>
-                    <td>{{ detail.amount }}</td>
-                </tr>
+                    <tr *ngFor="let detail of expense.details;">
+                        <td>{{ detail.concept }}</td>
+                        <td>{{ detail.period }}</td>
+                        <td>${{ detail.amount }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
