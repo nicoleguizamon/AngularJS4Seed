@@ -81,6 +81,7 @@ export class HeaderComponent implements OnInit {
         this.displayBuildings = false;
         this.buildingName = this.userCustom.buildings.find(x => x.id == this.buildingSelectedId).name;
         if(this.router.url == "/home") {
+            this.userdataService.getBuildingNews();
             //TODO:If your navigate() doesn't change the URL that already shown on the address bar of 
             //your browser, the router has nothing to do. It's not the router's job to refresh the data.
             //If you want to refresh the data, create a service injected into the component and invoke 
