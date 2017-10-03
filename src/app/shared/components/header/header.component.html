@@ -5,6 +5,10 @@
         </button>
         <a *ngIf="userCustom.buildings" class="navbar-brand" href="javascript:void(0)">{{ buildingName }}</a>
         <div *ngIf="userCustom.buildings && userCustom.buildings.length > 1">
+            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" (change)="showDialogBuildings()">
+                <option value="" >Elegir...</option>
+                <option *ngFor="let building of buildingOptions" [value]="selectedValue" [value]="building.id">{{building.name}}</option>
+            </select>
             <a class="btn btn-*" href="javascript:void(0)" (click)="showDialogBuildings()">Cambiar</a>
             <p-dialog header="Cambiar Edificio" [(visible)]="displayBuildings">
                 <fieldset class="form-group">
