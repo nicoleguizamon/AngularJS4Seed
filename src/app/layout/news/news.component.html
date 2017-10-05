@@ -4,13 +4,15 @@
     <div *ngFor="let new of news; let i = index">
         <div class="row">
             <div class="col-xl-12 text-xs-center">
-                <div class="card card-default">
+                <div class="card mb-3">
+                    <div class="card-header card-default">
+                            {{new.title}}
+                    </div>
                     <div class="card-block">
-                        {{new.title}}
-                        <br/>
-                        {{new.summary}}
+                            {{new.description}}
                     </div>
                 </div>
+
             </div>
         </div>
         <br/>
