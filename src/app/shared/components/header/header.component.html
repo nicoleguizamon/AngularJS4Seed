@@ -3,40 +3,22 @@
         <button class="navbar-toggler navbar-toggler-right" (click)="toggleSidebar()">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a *ngIf="userCustom.buildings" class="navbar-brand" href="javascript:void(0)">{{ buildingName }}</a>
+        <a *ngIf="userCustom.buildings && userCustom.buildings.length == 1" class="navbar-brand" href="javascript:void(0)">{{ buildingName }}</a>
         <div *ngIf="userCustom.buildings && userCustom.buildings.length > 1">
             <select (ng-value)="buildingSelectedId" class="custom-select mb-2 mr-sm-2 mb-sm-0" (change)="selectBuilding(building.value)" #building>
-                <option value="-1" >Elegir...</option>
                 <option *ngFor="let building of buildingOptions" [value]="building.id">{{building.name}}</option>
             </select>
-            <!--a class="btn btn-*" href="javascript:void(0)" (click)="showDialogBuildings()">Cambiar</a-->
-            <!--p-dialog header="Cambiar Edificio" [(visible)]="displayBuildings">
-                <fieldset class="form-group">
-                    <legend>Edificios</legend>
-                    <div *ngFor="let building of userCustom.buildings" class="form-check">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" (click)="buildingSelectedId=building.id" id={{building.id}} value={{building.id}} [checked] = "buildingSelectedId == building.id ? true : false" >
-                        {{ building.name }}
-                      </label>
-                    </div>
-                </fieldset>
-                <p-footer>
-                    <button type="button" pButton icon="fa-check" (click)="selectBuilding()" label="Yes"></button>
-                    <button type="button" pButton icon="fa-close" (click)="displayBuildings=false" label="No"></button>
-                </p-footer>
-            </p-dialog-->
+
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto mt-2 mt-md-0">
                 <li class="nav-item dropdown" ngbDropdown>
                     <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                        <i class="fa fa-user"></i> {{userCustom.fullname}} <b class="caret"></b>
+                        {{userCustom.fullname}} <b class="caret"></b>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                        <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()"><i class="fa fa-fw fa-power-off"></i> Cerra Sesión</a>
                     </div>
                 </li>
             </ul>

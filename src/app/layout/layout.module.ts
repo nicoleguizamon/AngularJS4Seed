@@ -21,7 +21,7 @@ import { DialogModule } from 'primeng/primeng';
     declarations: [
         LayoutComponent,
         HeaderComponent,
-        SidebarComponent
+        SidebarComponent,
     ]
 })
 export class LayoutModule { }

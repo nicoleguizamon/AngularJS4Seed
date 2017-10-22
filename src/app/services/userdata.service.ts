@@ -35,6 +35,11 @@ export class UserdataService extends BaseService {
         return this.httpGet(this.getUrl('Building/GetDataBuilding?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json().news);
     }
 
+    getDetailedInformations() {
+        //return this.http.get(this.getUrl('Building/GetDataBuilding?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json().news);
+        return this.httpGet(this.getUrl('Building/GetDataBuilding?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json().informations);
+    }
+
     getDetailedExpenses() {
         //return this.http.get(this.getUrl('User/GetDataExpenses?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json());
         return this.httpGet(this.getUrl('User/GetDataExpenses?pBuildingId=' + localStorage.getItem("committeeId")), this.getOptions()).map(res=>res.json());
