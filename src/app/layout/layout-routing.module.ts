@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Router, NavigationStart } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { JwtHelper } from 'angular2-jwt';
+//import { JwtHelper } from 'angular2-jwt';
 
 const routes: Routes = [
     {
@@ -28,15 +28,15 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 export class LayoutRoutingModule {
-    jwtHelper: JwtHelper = new JwtHelper();
+    //jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(router:Router) {
         router.events.subscribe(event => {
             if(event instanceof NavigationStart) {
                 var token = localStorage.getItem('token');
-                if (this.jwtHelper.isTokenExpired(token)) {
+                //if (this.jwtHelper.isTokenExpired(token)) {
                     //alert('Token expired');
-                }
+                //}
             }
             // NavigationEnd
             // NavigationCancel
