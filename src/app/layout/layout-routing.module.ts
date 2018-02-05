@@ -35,9 +35,9 @@ export class LayoutRoutingModule {
         /*router.events.subscribe(event => {
             if(event instanceof NavigationStart) {
                 var token = localStorage.getItem('token');
-                if (this.jwtHelper.isTokenExpired(token)) {
+                //if (this.jwtHelper.isTokenExpired(token)) {
                     //alert('Token expired');
-                }
+                //}
             }
             // NavigationEnd
             // NavigationCancel
